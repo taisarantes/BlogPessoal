@@ -42,18 +42,14 @@ public class Postagem {
 	@UpdateTimestamp // atualiza o date time para o tempo da maquina
 	private LocalDateTime data;
 	
-	// REALACIONAMENTO DA TABELA POSTAGENS COM TEMAS
+	// REALACIONAMENTO DE TABELAS
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
-
-	public Tema getTema() {
-		return tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
 	// ----------------------------------------------------------------------
 	// GETTERS e SETTERS
@@ -87,6 +83,22 @@ public class Postagem {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 
 }
